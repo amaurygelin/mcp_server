@@ -3,16 +3,12 @@
 This module defines a simple weather server with a tool to get weather information for a given location.
 """
 
-import os
-
 from mcp.server.fastmcp import FastMCP
 
 mcp = FastMCP(
-    "weather",
+    "Weather",
     host="0.0.0.0",
-    port=int(
-        os.environ.get("PORT", 8000),
-    ),
+    port="8001",
 )
 
 
@@ -23,4 +19,5 @@ async def get_weather(location: str) -> str:
 
 
 if __name__ == "__main__":
-    mcp.run(transport="streamable-http")
+    # mcp.run(transport="streamable-http")
+    mcp.run(transport="sse")
