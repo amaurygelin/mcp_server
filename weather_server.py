@@ -3,9 +3,17 @@
 This module defines a simple weather server with a tool to get weather information for a given location.
 """
 
+import os
+
 from mcp.server.fastmcp import FastMCP
 
-mcp = FastMCP("Weather")
+mcp = FastMCP(
+    "weather",
+    host="0.0.0.0",
+    port=int(
+        os.environ.get("PORT", 8000),
+    ),
+)
 
 
 @mcp.tool()
